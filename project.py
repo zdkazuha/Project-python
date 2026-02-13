@@ -1,6 +1,8 @@
-f = open('c:/Users/SystemX/Desktop/python and HTML/Проект/file_1.py')
-
+import os;
 import json
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, 'user_data.json')
 
 def main():
     database = load_database()
@@ -53,13 +55,13 @@ def main():
 
 def load_database():
     try:
-        with open('c:/Users/SystemX/Desktop/python and HTML/Проект/user_data.json', 'r') as file:
+        with open(DB_PATH, 'r') as file:
             return json.load(file)
-    except ():
+    except Exception ():
         return {'product': []}
 
 def save_database(database):
-    with open('c:/Users/SystemX/Desktop/python and HTML/Проект/user_data.json', 'w') as file:
+    with open(DB_PATH, 'w') as file:
         json.dump(database, file)
 
 def fill_database(database):
